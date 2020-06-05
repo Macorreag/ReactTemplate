@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import { PUBLICATIONSPUBLIC } from './../shared/publicationsPublic';
 
 class Publications extends Component {
@@ -8,23 +8,42 @@ class Publications extends Component {
         super(props);
 
         this.state = {
-            dishes: PUBLICATIONSPUBLIC
+            publications: PUBLICATIONSPUBLIC,
+            selectedPublication: null
         };
     }
 
-    render(){
-        const publications = this.state.dishes.map( (dish) => {
+    onSelectPublication( publication ){
+        this.setState({selectedPublication: publication });
+    }
+
+    renderPublication(publication){
+        if(publication != null){
             return(
-                <div key = {dish.id} className="col-12 mt-5">
-                    <Media tag="li">
-                        <Media left middle>
-                            <Media object src = {dish.image}/>
-                        </Media>
-                        <Media body className="ml-5">
-                            <Media heading >{dish.name}</Media>
-                            <p>{dish.description}</p>
-                        </Media>
-                    </Media>
+                <Card>
+                    <CardImg width="100%" src = {publication.image} alt={publication.name}/>
+                    <CardBody>
+                        <CardTitle>{publication.name}</CardTitle>
+                        <CardText>{publication.description}</CardText>
+                    </CardBody>
+                </Card>
+            )
+        }else{
+            return(
+                <div></div>
+            );
+        }
+    }
+    render(){
+        const publications = this.state.publications.map( (publication) => {
+            return(
+                <div key = {publication.id} className="col-12 col-md-5 mt-1">
+                    <Card onClick = {() => this.onSelectPublication(publication)}>
+                        <CardImg width="100%" src = {publication.image} alt={publication.name}/>
+                        <CardImgOverlay>
+                            <CardTitle >{publication.name}</CardTitle>
+                        </CardImgOverlay>
+                    </Card>
                 </div>
             );
         }) ;
@@ -32,9 +51,10 @@ class Publications extends Component {
         return(
             <div className="container">
                 <div className="row">
-                    <Media list>
                         {publications}
-                    </Media>
+                </div>
+                <div className="row">
+                    {this.renderPublication(this.state.selectedPublication)}
                 </div>
             </div>
         );
