@@ -11,6 +11,12 @@ class Publications extends Component {
             publications: PUBLICATIONSPUBLIC,
             selectedPublication: null
         };
+        console.log('Publication component constructor is invoked');
+        
+    }
+    componentDidMount(){
+        console.log('Menu ComponentDidMount is invoked');
+        
     }
 
     onSelectPublication( publication ){
