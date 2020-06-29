@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## This project is Dockerize
+
+This project has [Dockerize using this tutorial](https://mherman.org/blog/dockerizing-a-react-app/)
+
+Build the project
+
+-  ``` sudo docker build -t sample:dev . ```
+
+Up the project
+
+- ``` sudo docker run     -it     --rm     -v ${PWD}:/app     -v /app/node_modules     -p 3001:3000     -e CHOKIDAR_USEPOLLING=true     sample:dev ```
+
 ## Available Scripts
 
 In the project directory, you can run:
