@@ -4,6 +4,7 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import Publications from './components/Publications'
 import './App.css';
 
+
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
           </NavbarBrand>
         </div>
       </Navbar>
+      
       <Publications />
     </div>
   );
