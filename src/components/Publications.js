@@ -43,7 +43,7 @@ class Publications extends Component {
     render(){
         const publications = this.state.publications.map( (publication) => {
             return(
-                <div key = {publication.id} className="col-12 col-md-5 mt-1">
+                <div key = {publication.id} className="col-12 col-md-12 mt-1">
                     <Card onClick = {() => this.onSelectPublication(publication)}>
                         <CardImg width="100%" src = {publication.image} alt={publication.name}/>
                         <CardImgOverlay>
@@ -55,9 +55,11 @@ class Publications extends Component {
         }) ;
 
         return(
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
+                    <div className="col-4 col-md-4">
                         {publications}
+                    </div>
                 </div>
                 <div className="row">
                     {this.renderPublication(this.state.selectedPublication)}
